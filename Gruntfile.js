@@ -40,6 +40,7 @@ module.exports = function(grunt) {
         webpack: webpackDevOptions,
         contentBase: 'src/',
         publicPath: '/assets/js/',
+        historyApiFallback: true,
         hot: true
       },
       start: {
