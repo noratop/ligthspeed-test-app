@@ -7,8 +7,7 @@ import thunk from 'redux-thunk';
 
 import App from './container/App';
 import Home from './container/Home';
-import Followers from './container/Followers';
-import Repos from './container/Repos';
+import Contacts from './container/Contacts';
 import NotFound from './components/NotFound';
 
 import reducer from './redux/reducer';
@@ -21,8 +20,7 @@ const routes = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
-      <Route path="followers" component={Followers}/>
-      <Route path="repos" component={Repos}/>
+      <Route path="contacts" component={Contacts}/>
       <Route path="*" component={NotFound}/>
     </Route>
   </Router>

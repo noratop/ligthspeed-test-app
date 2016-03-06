@@ -2,36 +2,37 @@ import * as ActionTypes from './constants';
 import fetch from 'isomorphic-fetch';
 
 // Github examples
-const apiURL = 'https://api.github.com/users/ziad-saab';
+const apiURL = 'https://ligthspeed-test-api.herokuapp.com/api/';
 
-//Repos actions
-function requestRepos(){
+//Contacts actions
+function requestContacts(){
   return {
-    type: 'REQUEST_REPOS'
+    type: 'REQUEST_CONTACTS'
   }
 }
 
-function receivedRepos(result){
+function receivedContacts(result){
+  console.log(result);
   return {
-    type: 'SUCCESS_REPOS',
+    type: 'SUCCESS_CONTACTS',
     result
   }
 }
 
-function failedFetchingRepos(error){
+function failedFetchingContacts(error){
   return {
-    type: 'FAILURE_REPOS',
+    type: 'FAILURE_CONTACTS',
     error
   }
 }
 
-export function fetchRepos() {
+export function fetchContacts() {
   return (dispatch) => {
-    dispatch(requestRepos())
-    return fetch(`${apiURL}/repos`).
+    dispatch(requestContacts())
+    return fetch(`${apiURL}/Contacts`).
       then((response) => response.json()).
-      then((result) => dispatch(receivedRepos(result))).
-      catch((error) => dispatch(failedFetchingRepos(error)));
+      then((result) => dispatch(receivedContacts(result))).
+      catch((error) => dispatch(failedFetchingContacts(error)));
   };
 }
 

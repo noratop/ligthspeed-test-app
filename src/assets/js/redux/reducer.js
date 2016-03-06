@@ -1,18 +1,18 @@
 import {combineReducers} from 'redux';
 
-function repos(state={},action){
+function contacts(state={},action){
   switch (action.type) {
-    case 'REQUEST_REPOS':
+    case 'REQUEST_CONTACTS':
       return {
         isFetching: true
       };
       break;
-    case 'SUCCESS_REPOS':
+    case 'SUCCESS_CONTACTS':
       return {
         result:action.result
       };
       break;
-    case 'FAILURE_REPOS':
+    case 'FAILURE_CONTACTS':
       return {
         error: action.error
       };
@@ -45,6 +45,6 @@ function followers(state={},action){
 }
 
 //combine reducers
-const reducer = combineReducers({repos,followers});
+const reducer = combineReducers({contacts,followers});
 
 export default reducer;

@@ -6,8 +6,7 @@ class Home extends Component {
     return (
       <div>
         <ul>
-          <li><Link to="/repos">Repos</Link></li>
-          <li><Link to="/followers">Followers</Link></li>
+          <li><Link to="/contacts">Contacts</Link></li>
         </ul>
       </div>
     )
