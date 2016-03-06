@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Modal, {closeStyle} from 'simple-react-modal';
+import Modal from 'simple-react-modal';
 import ContactDetails from './ContactDetails';
 
 class Contact extends Component {
@@ -20,15 +20,18 @@ class Contact extends Component {
     const {contact} = this.props;
     return (
       <li>
-        <a onClick={this.show.bind(this)}>{`${contact.firstname} ${contact.lastname}`}</a>
-          <Modal
-          className="test-class" //this will completely overwrite the default css completely
-          closeOnOuterClick={false}
-          show={this.state.show}
-          onClose={this.close.bind(this)}>
-            <a onClick={this.close.bind(this)}>Close</a>
-            <ContactDetails {...contact}/>
-          </Modal>
+        <a href='#' onClick={this.show.bind(this)}>{`${contact.firstname} ${contact.lastname}`}</a>
+
+        <Modal
+        className="test-class" //this will completely overwrite the default css completely
+        closeOnOuterClick={true}
+        show={this.state.show}
+        onClose={this.close.bind(this)}>
+
+          <a href='#' onClick={this.close.bind(this)}>Close</a>
+          <ContactDetails {...contact}/>
+
+        </Modal>
       </li>
     )
   }

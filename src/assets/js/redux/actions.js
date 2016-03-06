@@ -2,7 +2,7 @@ import * as ActionTypes from './constants';
 import fetch from 'isomorphic-fetch';
 
 // Github examples
-const apiURL = 'https://ligthspeed-test-api.herokuapp.com/api/';
+const apiURL = 'https://ligthspeed-test-api.herokuapp.com/api';
 
 //Contacts actions
 function requestContacts(){
@@ -30,43 +30,64 @@ export function fetchContacts() {
   return (dispatch) => {
     dispatch(requestContacts())
     return fetch(`${apiURL}/Contacts`).
-      then((response) => response.json()).
-      then((result) => dispatch(receivedContacts(result))).
-      catch((error) => dispatch(failedFetchingContacts(error)));
+    then((response) => response.json()).
+    then((result) => dispatch(receivedContacts(result))).
+    catch((error) => dispatch(failedFetchingContacts(error)));
   };
 }
 
 
-//Followers actions
-function requestFollowers(){
-  return {
-    type: 'REQUEST_FOLLOWERS'
-  }
-}
+//Create contact
 
-function receivedFollowers(result){
-  return {
-    type: 'SUCCESS_FOLLOWERS',
-    result
-  }
-}
-
-function failedFetchingFollowers(error){
-  return {
-    type: 'FAILURE_FOLLOWERS',
-    error
-  }
-}
-
-export function fetchFollowers() {
+export function addContact(contact){
   return (dispatch) => {
-    dispatch(requestFollowers())
-    return fetch(`${apiURL}/followers`).
-      then((response) => response.json()).
-      then((result) => dispatch(receivedFollowers(result))).
-      catch((error) => dispatch(failedFetchingFollowers(error)));
-  };
+    console.log(JSON.stringify(contact));
+    return fetch(`${apiURL}/Contacts`, {
+      method: 'post',body: JSON.stringify(contact),headers: new Headers({
+		      'Content-Type': 'application/json'
+	      })
+      }).
+    then((response) => {
+      if (response.ok) {
+        return dispatch(fetchContacts());
+      } else {
+        return Promise.reject();
+      }
+    })
+  }
 }
+
+
+// //Followers actions
+// function requestFollowers(){
+//   return {
+//     type: 'REQUEST_FOLLOWERS'
+//   }
+// }
+//
+// function receivedFollowers(result){
+//   return {
+//     type: 'SUCCESS_FOLLOWERS',
+//     result
+//   }
+// }
+//
+// function failedFetchingFollowers(error){
+//   return {
+//     type: 'FAILURE_FOLLOWERS',
+//     error
+//   }
+// }
+//
+// export function fetchFollowers() {
+//   return (dispatch) => {
+//     dispatch(requestFollowers())
+//     return fetch(`${apiURL}/followers`).
+//       then((response) => response.json()).
+//       then((result) => dispatch(receivedFollowers(result))).
+//       catch((error) => dispatch(failedFetchingFollowers(error)));
+//   };
+// }
 
 
 

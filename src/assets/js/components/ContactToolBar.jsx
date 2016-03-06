@@ -1,16 +1,14 @@
 import React, { Component, PropTypes } from 'react';
+import AddContactButton from './AddContactButton';
 
-class ContactToolBar extends Component {
-  constructor(props) {
-     super(props);
-     this.state = {};
-   }
-
-  render(){
+function ContactToolBar() {
     return (
-      <div>Tool bar</div>
+      <ul>
+        <li>
+          <AddContactButton/>
+        </li>
+      </ul>
     )
-  }
 }
 
 export default ContactToolBar;
