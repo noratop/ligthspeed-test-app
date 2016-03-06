@@ -16,10 +16,16 @@ class Contact extends Component {
     this.setState({show: false})
   }
 
+  onBoxClick(){
+    // console.log(this.props.contact.id);
+    this.props.onCheckedContactItem(this.props.contact.id);
+  }
+
   render(){
     const {contact} = this.props;
     return (
       <li>
+        <input type='checkbox' onClick={this.onBoxClick.bind(this)}/>
         <a href='#' onClick={this.show.bind(this)}>{`${contact.firstname} ${contact.lastname}`}</a>
 
         <Modal

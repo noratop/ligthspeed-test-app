@@ -28,13 +28,14 @@ class AddContactButton extends Component {
       lastname: e.target.lastname.value
     }
 
-    this.props.dispatch(addContact(contact));
+    this.props.dispatch(addContact(contact)).
+    then(()=>{this.close()});
   }
 
   render(){
     return (
       <div>
-        <a href='#' onClick={this.show.bind(this)}>new Contacts</a>
+        <a href='#' onClick={this.show.bind(this)}>Add contact</a>
         <Modal
           className="test-class"
           closeOnOuterClick={true}

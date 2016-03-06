@@ -1,13 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import AddContactButton from './AddContactButton';
+import DeleteContactButton from './DeleteContactButton';
 
-function ContactToolBar() {
+function ContactToolBar({userSelection}) {
     return (
-      <ul>
-        <li>
-          <AddContactButton/>
-        </li>
-      </ul>
+      <div>
+        <h2>Tool Bar</h2>
+        <AddContactButton/>
+        <DeleteContactButton userSelection={userSelection}/>
+      </div>
     )
 }
 

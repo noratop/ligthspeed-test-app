@@ -38,10 +38,8 @@ export function fetchContacts() {
 
 
 //Create contact
-
 export function addContact(contact){
   return (dispatch) => {
-    console.log(JSON.stringify(contact));
     return fetch(`${apiURL}/Contacts`, {
       method: 'post',body: JSON.stringify(contact),headers: new Headers({
 		      'Content-Type': 'application/json'
@@ -57,6 +55,39 @@ export function addContact(contact){
   }
 }
 
+//Delete contact
+function deleteRequest(){
+  return {
+    type: 'DELETE_REQUEST'
+  }
+}
+
+function completeDeletion(){
+  return {
+    type: 'DELETE_COMPLETE'
+  }
+}
+
+function deleteContact(contactId){
+  return fetch(`${apiURL}/Contacts/${contactId}`, {method: 'delete'}).
+  then((response) => {
+    if (response.ok) {
+      return Promise.resolve();
+    } else {
+      return Promise.reject();
+    }
+  })
+}
+
+export function deleteSelectedContacts(contacts){
+  return (dispatch) => {
+    dispatch(deleteRequest());
+    const deletionStatus = contacts.map(deleteContact);
+    return Promise.all(deletionStatus).
+    then(() => dispatch(fetchContacts())).
+    catch(() => Promise.reject())
+  }
+}
 
 // //Followers actions
 // function requestFollowers(){

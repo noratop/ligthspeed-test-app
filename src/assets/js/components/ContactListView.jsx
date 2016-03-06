@@ -1,14 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import Contact from './Contact';
-import ContactToolBar from './ContactToolBar';
 
-function ContactListView({list}){
+function ContactListView({list,onCheckedContactItem}){
   return (
     <div>
       <h2>Contacts</h2>
-      <ContactToolBar/>
       <ul>{list.map((contact)=>
-          <Contact key={contact.id} contact={contact}/>
+          <Contact key={contact.id} contact={contact} onCheckedContactItem={onCheckedContactItem}/>
       )}</ul>
     </div>
   )
