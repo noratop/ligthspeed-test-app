@@ -14,35 +14,15 @@ class Contacts extends Component {
       this.props.dispatch(fetchContacts());
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //     this.props.dispatch(fetchContacts());
-  // }
-
-  onCheckedContactItem(id) {
-    const {userSelection} = this.state;
-    const unselectedContactIndex = userSelection.indexOf(id);
-    console.log(unselectedContactIndex);
-
-    if (unselectedContactIndex >= 0) {
-      userSelection.splice(unselectedContactIndex,1);
-    }
-    else {
-      userSelection.push(id);
-    }
-
-    this.setState({userSelection});
-  }
-
   render() {
   console.log(this.props.contacts);
     const {contacts} = this.props;
 
     return (
-      <div>
-        <h2>Filter bar</h2>
+      <div className='contact-container'>
         <ContactToolBar userSelection={this.state.userSelection}/>
         {this.renderStatus()}
-        <ContactListView list={contacts.result || []} onCheckedContactItem={this.onCheckedContactItem.bind(this)}/>
+        <ContactListView list={contacts.result || []}/>
       </div>
     )
   }

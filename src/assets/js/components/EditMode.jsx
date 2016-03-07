@@ -6,6 +6,10 @@ class EditMode extends Component {
   handleChange(){
 
   }
+  onCancel(e){
+    e.preventDefault();
+    this.props.exitEditMode();
+  }
   onSave(e){
     e.preventDefault();
     const contact = Object.keys(this.refs).reduce((obj,key)=>{
@@ -14,12 +18,13 @@ class EditMode extends Component {
     },{id: this.props.id});
 
     this.props.dispatch(saveContact(contact)).
-    then(()=>{this.props.saveChanges()});
+    then(()=>{this.props.exitEditMode()});
   }
   render() {
     const {firstname,lastname,job} = this.props;
     return (
       <div>
+        <a href='#' onClick={this.onCancel.bind(this)}>cancel</a>
         <a href='#' onClick={this.onSave.bind(this)}>save</a>
         <ul>
           <li>

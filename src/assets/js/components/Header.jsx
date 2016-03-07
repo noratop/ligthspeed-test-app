@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 class Header extends Component {
   render () {
     return (
-      <h1>Lightspeed technical test</h1>
+      <h1 className='header'>Lightspeed technical test</h1>
     )
   }
 }

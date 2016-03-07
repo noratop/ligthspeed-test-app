@@ -11,11 +11,11 @@ class ContactDetails extends Component {
     e.preventDefault();
     this.setState({editMode:true});
   }
-  saveChanges(){
+  exitEditMode(){
     this.setState({editMode:false});
   }
   render() {
-  console.log('contact details');
+    console.log('contact details');
     return (
       <div>
         <h2>Contact Details</h2>
@@ -31,7 +31,7 @@ class ContactDetails extends Component {
   }
   renderMode(){
     if (this.state.editMode) {
-      return <EditMode {...this.props} saveChanges={this.saveChanges.bind(this)}/>
+      return <EditMode {...this.props} exitEditMode={this.exitEditMode.bind(this)}/>
     }
     else {
       return <ViewMode {...this.props}/>

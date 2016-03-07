@@ -17,6 +17,12 @@ function contacts(state={isFetching:false},action){
         error: action.error
       };
       break;
+    case 'CHECK_CONTACT':
+      return {
+        ...state,
+        result:action.result
+      }
+      break;
     case 'DELETE_REQUEST':
       return {
         ...state,

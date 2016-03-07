@@ -63,15 +63,37 @@ export function addContact(contact){
 }
 
 //Delete contact
+function setContactChecked(newResult){
+  return {
+    type:'CHECK_CONTACT',
+    result:newResult
+  }
+}
+
+export function checkContact(contactId){
+  console.log(contactId);
+  return (dispatch,getState) => {
+    const {result} = getState().contacts;
+
+    const newResult = result.map((contact)=>{
+      if (contact.id === contactId){
+        return {...contact,checked:!contact.checked}
+      }
+      return contact;
+    })
+
+    dispatch(setContactChecked(newResult));
+  }
+}
+
 function deleteRequest(){
   return {
     type: 'DELETE_REQUEST'
   }
 }
 
-
-function deleteContact(contactId){
-  return fetch(`${apiURL}/Contacts/${contactId}`, {method: 'delete'}).
+function deleteContact(contact){
+  return fetch(`${apiURL}/Contacts/${contact.id}`, {method: 'delete'}).
   then((response) => {
     if (response.ok) {
       return Promise.resolve();
@@ -82,9 +104,10 @@ function deleteContact(contactId){
 }
 
 export function deleteSelectedContacts(contacts){
-  return (dispatch) => {
+  return (dispatch,getState) => {
     dispatch(deleteRequest());
-    return Promise.all(contacts.map(deleteContact)).
+    const selection = getState().contacts.result.filter((contact)=>contact.checked);
+    return Promise.all(selection.map(deleteContact)).
     then(() => dispatch(fetchContacts(true))).
     catch(() => Promise.reject())
   }

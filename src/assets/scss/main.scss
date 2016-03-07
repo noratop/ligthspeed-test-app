@@ -1,6 +1,9 @@
 @import 'foundation_settings';
 @import 'foundation';
 
+$red: #ed5153;
+$gray: #d6d6d6;
+
 html {
   box-sizing: border-box;
 }
@@ -9,4 +12,13 @@ html {
   box-sizing: inherit;
 }
 
-@import 'github-user';
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+@import 'header';
+@import 'toolbar';
+@import 'contacts';
+@import 'adddialog';

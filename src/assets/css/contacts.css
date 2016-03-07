@@ -1,0 +1,24 @@
+/* line 1, ../scss/contacts.scss */
+.contact-container {
+  padding: 0 5px; }
+
+/* line 6, ../scss/contacts.scss */
+.contact-list {
+  padding: 0;
+  list-style: none;
+  text-decoration: none; }
+  /* line 11, ../scss/contacts.scss */
+  .contact-list__paper {
+    padding: 10px; }
+    /* line 14, ../scss/contacts.scss */
+    .contact-list__paper__container {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center; }
+    /* line 19, ../scss/contacts.scss */
+    .contact-list__paper__name {
+      text-decoration: none;
+      color: black; }

@@ -1,15 +1,19 @@
 import React, { Component, PropTypes } from 'react';
-import AddContactButton from './AddContactButton';
-import DeleteContactButton from './DeleteContactButton';
+import AddButton from './AddButton';
+import DeleteButton from './DeleteButton';
+import FilterButton from './FilterButton';
+import SortButton from './SortButton';
+import ToolbarSeparator from 'material-ui/lib/toolbar/toolbar-separator';
 
 function ContactToolBar({userSelection}) {
-    return (
-      <div>
-        <h2>Tool Bar</h2>
-        <AddContactButton/>
-        <DeleteContactButton userSelection={userSelection}/>
-      </div>
-    )
+  return (
+    <div className='toolbar'>
+      <AddButton/>
+      <DeleteButton userSelection={userSelection}/>
+      <FilterButton/>
+      <SortButton/>
+    </div>
+  )
 }
 
 export default ContactToolBar;
