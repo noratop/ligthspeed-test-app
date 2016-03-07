@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 
-function contacts(state={},action){
+function contacts(state={isFetching:false},action){
   switch (action.type) {
     case 'REQUEST_CONTACTS':
       return {
@@ -19,9 +19,17 @@ function contacts(state={},action){
       break;
     case 'DELETE_REQUEST':
       return {
-        isDeleting:true,
-        ...state
+        ...state,
+        isDeleting:true
       }
+      break;
+    case 'REFRESH_CONTACTS':
+      return {
+        ...state,
+        isDeleting:false,
+        isRefreshing:true
+      }
+      break;
     default:
       return state;
   }

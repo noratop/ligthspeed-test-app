@@ -11,6 +11,12 @@ function requestContacts(){
   }
 }
 
+function refreshContacts(){
+  return {
+    type: 'REFRESH_CONTACTS'
+  }
+}
+
 function receivedContacts(result){
   console.log(result);
   return {
@@ -26,10 +32,11 @@ function failedFetchingContacts(error){
   }
 }
 
-export function fetchContacts() {
+export function fetchContacts(refresh=false) {
   return (dispatch) => {
-    dispatch(requestContacts())
-    return fetch(`${apiURL}/Contacts`).
+    if (refresh) {dispatch(refreshContacts());}
+    else {dispatch(requestContacts());}
+    return fetch(`${apiURL}/Contacts?filter={"include":["addresses","emailaddresses","phones"]}`).
     then((response) => response.json()).
     then((result) => dispatch(receivedContacts(result))).
     catch((error) => dispatch(failedFetchingContacts(error)));
@@ -47,7 +54,7 @@ export function addContact(contact){
       }).
     then((response) => {
       if (response.ok) {
-        return dispatch(fetchContacts());
+        return dispatch(fetchContacts(true));
       } else {
         return Promise.reject();
       }
@@ -62,11 +69,6 @@ function deleteRequest(){
   }
 }
 
-function completeDeletion(){
-  return {
-    type: 'DELETE_COMPLETE'
-  }
-}
 
 function deleteContact(contactId){
   return fetch(`${apiURL}/Contacts/${contactId}`, {method: 'delete'}).
@@ -82,12 +84,32 @@ function deleteContact(contactId){
 export function deleteSelectedContacts(contacts){
   return (dispatch) => {
     dispatch(deleteRequest());
-    const deletionStatus = contacts.map(deleteContact);
-    return Promise.all(deletionStatus).
-    then(() => dispatch(fetchContacts())).
+    return Promise.all(contacts.map(deleteContact)).
+    then(() => dispatch(fetchContacts(true))).
     catch(() => Promise.reject())
   }
 }
+
+
+//edit contacts
+export function saveContact(contact){
+  return (dispatch) => {
+    return fetch(`${apiURL}/Contacts/${contact.id}`, {
+      method: 'put',body: JSON.stringify(contact),headers: new Headers({
+		      'Content-Type': 'application/json'
+	      })
+      }).
+    then((response) => {
+      if (response.ok) {
+        return dispatch(fetchContacts(true));
+        // return Promise.resolve();
+} else {
+        return Promise.reject();
+      }
+    })
+  }
+}
+
 
 // //Followers actions
 // function requestFollowers(){

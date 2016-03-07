@@ -34,6 +34,7 @@ class Contacts extends Component {
   }
 
   render() {
+  console.log(this.props.contacts);
     const {contacts} = this.props;
 
     return (
@@ -54,6 +55,9 @@ class Contacts extends Component {
     }
     else if (contacts.isDeleting) {
       return 'deleting contacts...';
+    }
+    else if (contacts.isRefreshing) {
+      return 'refreshing...';
     }
     else if (contacts.isFetching) {
       return 'loading...';
