@@ -14,7 +14,7 @@ class EditEmail extends Component {
     console.log('change');
     if (e.key === 'Enter'){
       console.log('enter');
-      
+
       const newEmail = {
         key: this.state.emails.length+1,
         emailAddress: this.refs.newEmail.value
@@ -58,7 +58,7 @@ class EditEmail extends Component {
         })}
         <div className='dialog__content__row'>
           <label htmlFor='newEmail'><nobr>+</nobr></label>
-          <input type='text' ref='newEmail' required={false} placeholder='add email' onKeyUp={this.onChangeHandler}/>
+          <input type='text' ref='newEmail' required={false} placeholder='add email (and press Enter)' onKeyUp={this.onChangeHandler}/>
         </div>
       </div>
     )
