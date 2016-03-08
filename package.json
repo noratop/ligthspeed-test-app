@@ -1,8 +1,8 @@
 {
-  "name": "react-redux example",
+  "name": "lightspeep-test-app",
   "version": "0.1.0",
   "main": "index.html",
-  "description": "react-redux example",
+  "description": "lightspeep-test-app",
   "author": "Nora Top",
   "license": "ISC",
   "dependencies": {
