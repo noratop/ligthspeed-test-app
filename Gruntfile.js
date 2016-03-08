@@ -116,6 +116,12 @@ module.exports = function(grunt) {
     },
     clean: {
       dist: ['dist']
+    },
+    'gh-pages': {
+       options: {
+           base: 'dist'
+       },
+       src: ['**']
     }
   });
 
@@ -129,4 +135,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('dev', ['concurrent:dev']);
   grunt.registerTask('build', ['clean:dist', 'copy:dist', 'webpack:dist', 'sass:dist', 'postcss:dist']);
+  grunt.registerTask('deploy', ['build', 'gh-pages']);
 };

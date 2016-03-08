@@ -1,4 +1,7 @@
-# React starter kit 2016 February
+# Lightspeed technical test
+
+## live demo [here](http://noratop.github.io/salesfloor-challenge/)
+
 
 * React
 * Redux
