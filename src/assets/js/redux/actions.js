@@ -115,24 +115,66 @@ export function deleteSelectedContacts(contacts){
 
 
 //edit contacts
+function postEmail(email,id) {
+  return fetch(`${apiURL}/Contacts/${id}/emailaddresses`, {
+    method: 'post',body: JSON.stringify({emailAddress:email.emailAddress}),headers: new Headers({
+      'Content-Type': 'application/json'
+    })
+  }).
+  then((response) => {
+    if (response.ok) {
+      return Promise.resolve();
+    } else {
+      return Promise.reject();
+    }
+  })
+}
+
+function updateContact(contact) {
+  return fetch(`${apiURL}/Contacts/${contact.id}`, {
+    method: 'put',body: JSON.stringify(contact),headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    }).
+  then((response) => {
+    if (response.ok) {
+      return Promise.resolve();
+    } else {
+      return Promise.reject();
+    }
+  })
+}
+
 export function saveContact(contact){
   return (dispatch) => {
-    return fetch(`${apiURL}/Contacts/${contact.id}`, {
-      method: 'put',body: JSON.stringify(contact),headers: new Headers({
-		      'Content-Type': 'application/json'
-	      })
-      }).
-    then((response) => {
-      if (response.ok) {
-        return dispatch(fetchContacts(true));
-        // return Promise.resolve();
-} else {
-        return Promise.reject();
-      }
-    })
+    return Promise.all([updateContact(contact),Promise.all(contact.newEmails.map((email) => postEmail(email,contact.id)))]).
+    // return fetch(`${apiURL}/Contacts/${contact.id}`, {
+    //   method: 'put',body: JSON.stringify(contact),headers: new Headers({
+		//       'Content-Type': 'application/json'
+	  //     })
+    //   }).
+    // then((response) => {
+    //   return Promise.all(contact.newEmails.map((email) => postEmail(email,contact.id)))
+    // }).
+    // then((response) => {
+    //   if (response.ok) {
+    //     return dispatch(fetchContacts(true));
+    //     // return Promise.resolve();
+    //   } else {
+    //     return Promise.reject();
+    //   }
+    // })
+    then(() => dispatch(fetchContacts(true))).
+    catch(() => Promise.reject())
   }
 }
 
+export function sortContact(sort) {
+  return {
+    type: 'SORT_CONTACTS',
+    sort
+  }
+}
 
 // //Followers actions
 // function requestFollowers(){

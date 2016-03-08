@@ -1,19 +1,35 @@
 import {combineReducers} from 'redux';
 
-function contacts(state={isFetching:false},action){
+const initialState = {
+  isFetching:false,
+  isDeleting:false,
+  isRefreshing:false,
+  sort:'firstname'
+}
+
+function contacts(state=initialState,action){
   switch (action.type) {
     case 'REQUEST_CONTACTS':
       return {
+        ...state,
         isFetching: true
       };
       break;
     case 'SUCCESS_CONTACTS':
       return {
+        ...state,
+        isFetching:false,
+        isDeleting:false,
+        isRefreshing:false,
         result:action.result
       };
       break;
     case 'FAILURE_CONTACTS':
       return {
+        ...state,
+        isFetching:false,
+        isDeleting:false,
+        isRefreshing:false,
         error: action.error
       };
       break;
@@ -32,8 +48,15 @@ function contacts(state={isFetching:false},action){
     case 'REFRESH_CONTACTS':
       return {
         ...state,
+        isFetching:false,
         isDeleting:false,
         isRefreshing:true
+      }
+      break;
+    case 'SORT_CONTACTS':
+      return {
+        ...state,
+        sort:action.sort
       }
       break;
     default:

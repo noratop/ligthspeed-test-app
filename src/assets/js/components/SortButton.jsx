@@ -1,10 +1,27 @@
 import React, { Component, PropTypes } from 'react';
 import SortIcon from 'material-ui/lib/svg-icons/content/sort';
+import IconMenu from 'material-ui/lib/menus/icon-menu';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+import {connect} from 'react-redux';
+import {sortContact} from '../redux/actions';
 
-function SortButton(){
-  return (
-    <div className='toolbar__element toolbar__icon'><SortIcon style={{height: '100%',width: 'auto',fill:'white'}}/></div>
-  )
+class SortButton extends Component {
+  onTouchHandler = (e,sort) => {
+    e.preventDefault();
+    this.props.dispatch(sortContact(sort));
+  }
+  render() {
+    return (
+        <IconMenu className='toolbar__element toolbar__icon'
+            iconButtonElement={<SortIcon style={{height: '100%',width: 'auto',fill:'white'}}/>}
+            anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+            targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          >
+            <MenuItem primaryText="First Name" onTouchTap={(e)=>this.onTouchHandler(e,'firstname')}/>
+            <MenuItem primaryText="Last Name" onTouchTap={(e)=>this.onTouchHandler(e,'lastname')}/>
+        </IconMenu>
+    )
+  }
 }
 
-export default SortButton;
+export default connect(()=>{return {}})(SortButton);

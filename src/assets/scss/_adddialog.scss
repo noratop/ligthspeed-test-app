@@ -1,5 +1,9 @@
 .dialog {
 
+  &__input {
+    display: block;
+  }
+
   &__content {
 
     &__row {
@@ -8,6 +12,7 @@
 
       label {
         margin: 10px;
+        margin-left: 0;
       }
 
       input {

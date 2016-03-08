@@ -15,10 +15,20 @@
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
+      -webkit-flex-flow: row nowrap;
+          -ms-flex-flow: row nowrap;
+              flex-flow: row nowrap;
       -webkit-align-items: center;
           -ms-flex-align: center;
-              align-items: center; }
-    /* line 19, ../scss/contacts.scss */
-    .contact-list__paper__name {
+              align-items: center;
+      -webkit-justify-content: flex-start;
+          -ms-flex-pack: start;
+              justify-content: flex-start; }
+    /* line 21, ../scss/contacts.scss */
+    .contact-list__paper__detail {
+      text-align: left;
       text-decoration: none;
-      color: black; }
+      color: black;
+      -webkit-flex-basis: 40%;
+          -ms-flex-preferred-size: 40%;
+              flex-basis: 40%; }

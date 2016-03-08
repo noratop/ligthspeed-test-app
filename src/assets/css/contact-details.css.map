@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AAEE,4BAAc;EACZ,QAAQ,EAAE,KAAK;EACf,GAAG,EAAE,IAAI;EACT,KAAK,EAAE,IAAI",
+"sources": ["../scss/contact-details.scss"],
+"names": [],
+"file": "contact-details.css"
+}

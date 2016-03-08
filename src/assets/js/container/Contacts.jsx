@@ -14,15 +14,35 @@ class Contacts extends Component {
       this.props.dispatch(fetchContacts());
   }
 
+  getContactList = () => {
+    const {contacts} = this.props;
+    const {sort} = contacts;
+
+    if (contacts.result) {
+      switch(sort) {
+        case 'lastname':
+          return contacts.result.sort((a,b) => {
+            return a.lastname.toLowerCase() > b.lastname.toLowerCase()
+          })
+        break;
+        default:
+          return contacts.result.sort((a,b) => {
+            return a.firstname.toLowerCase() > b.firstname.toLowerCase()
+          });
+      }
+    }
+    else {
+      return [];
+    }
+  }
   render() {
   console.log(this.props.contacts);
-    const {contacts} = this.props;
 
     return (
       <div className='contact-container'>
         <ContactToolBar userSelection={this.state.userSelection}/>
         {this.renderStatus()}
-        <ContactListView list={contacts.result || []}/>
+        <ContactListView list={this.getContactList()}/>
       </div>
     )
   }

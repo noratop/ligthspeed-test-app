@@ -4,6 +4,7 @@ import {addContact} from '../redux/actions';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import AddIcon from 'material-ui/lib/svg-icons/content/add-circle-outline';
+import TextField from 'material-ui/lib/text-field';
 
 class AddButton extends Component {
   constructor(props) {
@@ -21,13 +22,19 @@ class AddButton extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
+    const {firstname,lastname} = this.state;
     const contact = {
-      firstname: this.refs.firstname.value,
-      lastname: this.refs.lastname.value
+      firstname,
+      lastname
     }
 
     this.props.dispatch(addContact(contact)).
     then(()=>{this.handleClose()});
+  }
+
+  onChangeHandler = (e) => {
+    e.preventDefault();
+    this.setState({[e.target.id]:e.target.value});
   }
 
   render(){
@@ -50,23 +57,14 @@ class AddButton extends Component {
         <a href='#' onClick={()=>{this.handleOpen()}}><div className='toolbar__icon'><AddIcon style={{height: '100%',width: 'auto',fill:'white'}}/></div></a>
         <Dialog
           className='dialog'
-          contentClassName='dialog__content'
           title="Add a new contact"
           actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          <div className='dialog__content'>
-            <div className='dialog__content__row'>
-              <label htmlFor='firstname'><nobr>First Name:</nobr></label>
-              <input type='text' ref='firstname' required='true'/>
-            </div>
-            <div className='dialog__content__row'>
-              <label htmlFor='lastname'><nobr>Last Name:</nobr></label>
-              <input type='text' ref='lastname' required='true'/>
-            </div>
-          </div>
+          <div><TextField inputStyle={{}} className='dialog__input' hintText="First Name" id='firstname' onChange={this.onChangeHandler}/></div>
+          <div><TextField className='dialog__input' hintText="Last Name" id='lastname' onChange={this.onChangeHandler}/></div>
         </Dialog>
       </div>
     )

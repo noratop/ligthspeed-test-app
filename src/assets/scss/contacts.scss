@@ -13,12 +13,16 @@
 
     &__container {
       display: flex;
+      flex-flow: row nowrap;
       align-items: center;
+      justify-content: flex-start;
     }
 
-    &__name {
+    &__detail {
+      text-align: left;
       text-decoration: none;
       color: black;
+      flex-basis: 40%;
     }
   }
 }
