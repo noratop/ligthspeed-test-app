@@ -19,8 +19,7 @@ injectTapEventPlugin();
 const routes = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={Home}/>
-      <Route path="contacts" component={Contacts}/>
+      <IndexRoute component={Contacts}/>
       <Route path="*" component={NotFound}/>
     </Route>
   </Router>
