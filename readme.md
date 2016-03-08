@@ -48,4 +48,7 @@ available endpoints:
 
 ### Additional comments
 The react router is supposed to handle pagination, which is not yet coded.
+
 There is still a lot of features to code but the general design/principle for each of them is set.
+
+Design for tablet/desktop will have a slightly different layout, by basically breaking down the actual toolbar: filter/sort features will have its own panel on the left of the contact list, and all icon buttons will be turned into text buttons.
