@@ -44,3 +44,8 @@ available endpoints:
 * Edit contact (only root properties:First Name, Last Name, Job title)
 * Add email addresses
 * Sort contact list by first name (default) or last name
+
+
+### Additional comments
+The react router is supposed to handle pagination, which is not yet coded.
+There is still a lot of features to code but the general design/principle for each of them is set.
