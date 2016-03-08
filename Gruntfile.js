@@ -132,6 +132,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-webpack');
   grunt.loadNpmTasks('grunt-postcss');
+  grunt.loadNpmTasks('grunt-gh-pages');
+
 
   grunt.registerTask('dev', ['concurrent:dev']);
   grunt.registerTask('build', ['clean:dist', 'copy:dist', 'webpack:dist', 'sass:dist', 'postcss:dist']);
