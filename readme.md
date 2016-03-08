@@ -34,6 +34,8 @@ available endpoints:
 * /Contacts/{id}/emailaddresses
 * /Contacts/{id}/phones
 
+[code](https://github.com/noratop/ligthspeed-test-api)
+
 ### Available features
 * Contacts list view
 * Add a new contact
