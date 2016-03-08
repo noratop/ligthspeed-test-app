@@ -26,7 +26,9 @@ The app is still currently in development and is only designed for mobile for no
 ### REST API
 
 I build my own API with Loopback, deployed on heroku.
+
 Root URL : https://ligthspeed-test-api.herokuapp.com/api
+
 available endpoints:
 * /Contacts
 * /Contacts/{id}
