@@ -20,6 +20,7 @@ const routes = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Contacts}/>
+      <Route path="ligthspeed-test-app" component={Contacts}/>
       <Route path="*" component={NotFound}/>
     </Route>
   </Router>
