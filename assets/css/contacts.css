@@ -1,1 +1,34 @@
-.contact-container{padding:0 5px}.contact-list{padding:0;list-style:none;text-decoration:none}.contact-list__paper{padding:10px}.contact-list__paper__container{display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-flow:row nowrap;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-justify-content:flex-start;-ms-flex-pack:start;justify-content:flex-start}.contact-list__paper__detail{text-align:left;text-decoration:none;color:black;-webkit-flex-basis:40%;-ms-flex-preferred-size:40%;flex-basis:40%}
+/* line 1, ../scss/contacts.scss */
+.contact-container {
+  padding: 0 5px; }
+
+/* line 6, ../scss/contacts.scss */
+.contact-list {
+  padding: 0;
+  list-style: none;
+  text-decoration: none; }
+  /* line 11, ../scss/contacts.scss */
+  .contact-list__paper {
+    padding: 10px; }
+    /* line 14, ../scss/contacts.scss */
+    .contact-list__paper__container {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-flow: row nowrap;
+          -ms-flex-flow: row nowrap;
+              flex-flow: row nowrap;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-justify-content: flex-start;
+          -ms-flex-pack: start;
+              justify-content: flex-start; }
+    /* line 21, ../scss/contacts.scss */
+    .contact-list__paper__detail {
+      text-align: left;
+      text-decoration: none;
+      color: black;
+      -ms-flex-preferred-size: 40%;
+              -webkit-flex-basis: 40%;
+              flex-basis: 40%; }

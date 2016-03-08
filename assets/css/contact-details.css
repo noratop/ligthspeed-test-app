@@ -1,1 +1,5 @@
-.contact-details__editButton{position:fixed;top:20px;right:20px}
+/* line 3, ../scss/contact-details.scss */
+.contact-details__editButton {
+  position: fixed;
+  top: 20px;
+  right: 20px; }
