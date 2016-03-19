@@ -50,6 +50,7 @@ class DeleteButton extends Component {
           className='dialog'
           contentClassName='dialog__content'
           title="Delete contacts"
+          contentStyle={{maxWidth:'500px'}}
           actions={actions}
           modal={false}
           open={this.state.open}

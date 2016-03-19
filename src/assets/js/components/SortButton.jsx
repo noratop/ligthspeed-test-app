@@ -14,7 +14,7 @@ class SortButton extends Component {
     return (
         <IconMenu className='toolbar__element toolbar__icon'
             iconButtonElement={<SortIcon style={{height: '100%',width: 'auto',fill:'white'}}/>}
-            anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+            anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
             targetOrigin={{horizontal: 'left', vertical: 'top'}}
           >
             <MenuItem primaryText="First Name" onTouchTap={(e)=>this.onTouchHandler(e,'firstname')}/>

@@ -16,7 +16,6 @@ class ContactDetails extends Component {
     this.setState({editMode:false});
   }
   render() {
-    console.log('contact details');
     return (
       <div>
         {this.renderEditButton()}
@@ -26,7 +25,7 @@ class ContactDetails extends Component {
   }
   renderEditButton(){
     if (!this.state.editMode) {
-      return <a className='contact-details__editButton' href='#' onClick={this.onEditHandler}><EditIcon/></a>
+      return <a className='contact-edit__editButton contact-edit__editButton--pencil' href='#' onClick={this.onEditHandler}><EditIcon/></a>
     }
   }
   renderMode(){

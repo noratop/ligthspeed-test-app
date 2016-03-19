@@ -1,8 +1,12 @@
-.contact-details
+.contact-edit
 {
   &__editButton {
     position: fixed;
     top: 20px;
     right: 20px;
+
+    &--pencil {
+      padding: 10px;
+    }
   }
 }

@@ -29,7 +29,7 @@ class Contact extends Component {
         primary={true}
         keyboardFocused={true}
         onTouchTap={this.handleClose}
-      />,
+      />
     ];
 
     return (
@@ -46,7 +46,9 @@ class Contact extends Component {
         <Dialog
           className='dialog'
           contentClassName='dialog__content'
-          title={`${contact.firstname} ${contact.lastname}`}
+          title='Contact Details'
+          titleStyle={{color:'#8E8E8E',fontSize:'1.4em'}}
+          contentStyle={{maxWidth:"650px"}}
           actions={actions}
           modal={false}
           open={this.state.open}

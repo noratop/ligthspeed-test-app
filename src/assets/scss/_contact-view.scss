@@ -1,0 +1,40 @@
+.contact-view
+{
+  display: flex;
+  flex-flow: row wrap;
+
+  @include breakpoint(medium) {
+    flex-flow: row nowrap;
+  }
+
+  &__primary {
+    width:100%;
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  &__secondary {
+    width:150%;
+    padding: 0 10px;
+  }
+
+  &__paper {
+    padding: 5px 10px;
+    margin: 5px -10px;
+  }
+
+  &__email {
+    display: flex;
+    flex-flow: row nowrap;
+
+    h4 {margin:0 5px 0 0;flex-basis: 30%;}
+
+    &__list {
+      margin:0;
+      padding:0;
+      list-style: none;
+    }
+  }
+}

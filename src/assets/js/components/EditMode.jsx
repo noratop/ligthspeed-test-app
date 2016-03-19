@@ -50,7 +50,7 @@ class EditMode extends Component {
     const {firstname,lastname,job,emailaddresses} = this.props;
     return (
       <div>
-        <div className='contact-details__editButton'>
+        <div className='contact-edit__editButton'>
           <RaisedButton label="Cancel" onClick={this.onCancelHandler} style={{margin: 5}}/>
           <RaisedButton label="Save" primary={true} onClick={this.onSaveHandler} style={{margin: 5}}/>
         </div>

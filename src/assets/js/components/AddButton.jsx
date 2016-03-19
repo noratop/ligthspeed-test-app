@@ -5,6 +5,7 @@ import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import AddIcon from 'material-ui/lib/svg-icons/content/add-circle-outline';
 import TextField from 'material-ui/lib/text-field';
+import RaisedButton from '../lib/raised-button';
 
 class AddButton extends Component {
   constructor(props) {
@@ -49,22 +50,27 @@ class AddButton extends Component {
         primary={true}
         keyboardFocused={true}
         onTouchTap={this.onSubmit}
-      />,
+      />
     ];
 
     return (
       <div className='toolbar__element'>
-        <a href='#' onClick={()=>{this.handleOpen()}}><div className='toolbar__icon'><AddIcon style={{height: '100%',width: 'auto',fill:'white'}}/></div></a>
+        <a href='#' onClick={this.handleOpen}>
+          <div className='toolbar__icon'>
+            <AddIcon style={{height: '100%',width: 'auto',fill:'white'}}/>
+          </div>
+        </a>
         <Dialog
           className='dialog'
           title="Add a new contact"
+          contentStyle={{maxWidth:'400px'}}
           actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          <div><TextField inputStyle={{}} className='dialog__input' hintText="First Name" id='firstname' onChange={this.onChangeHandler}/></div>
-          <div><TextField className='dialog__input' hintText="Last Name" id='lastname' onChange={this.onChangeHandler}/></div>
+          <div><TextField style={{width:'100%'}} className='dialog__input' hintText="First Name" id='firstname' onChange={this.onChangeHandler}/></div>
+          <div><TextField style={{width:'100%'}} className='dialog__input' hintText="Last Name" id='lastname' onChange={this.onChangeHandler}/></div>
         </Dialog>
       </div>
     )
