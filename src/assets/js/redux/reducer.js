@@ -3,7 +3,7 @@ import {combineReducers} from 'redux';
 const initialState = {
   isFetching:false,
   isDeleting:false,
-  isRefreshing:false,
+  isSyncing:false,
   sort:'firstname'
 }
 
@@ -20,7 +20,7 @@ function contacts(state=initialState,action){
         ...state,
         isFetching:false,
         isDeleting:false,
-        isRefreshing:false,
+        isSyncing:false,
         result:action.result
       };
       break;
@@ -29,7 +29,7 @@ function contacts(state=initialState,action){
         ...state,
         isFetching:false,
         isDeleting:false,
-        isRefreshing:false,
+        isSyncing:false,
         error: action.error
       };
       break;
@@ -45,12 +45,12 @@ function contacts(state=initialState,action){
         isDeleting:true
       }
       break;
-    case 'REFRESH_CONTACTS':
+    case 'SYNC_CONTACTS':
       return {
         ...state,
         isFetching:false,
         isDeleting:false,
-        isRefreshing:true
+        isSyncing:true
       }
       break;
     case 'SORT_CONTACTS':

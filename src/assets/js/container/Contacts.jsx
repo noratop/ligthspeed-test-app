@@ -56,8 +56,8 @@ class Contacts extends Component {
     else if (contacts.isDeleting) {
       return 'deleting contacts...';
     }
-    else if (contacts.isRefreshing) {
-      return 'refreshing...';
+    else if (contacts.isSyncing) {
+      return 'sync...';
     }
     else if (contacts.isFetching) {
       return 'loading...';

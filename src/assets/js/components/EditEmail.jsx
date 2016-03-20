@@ -7,55 +7,45 @@ class EditEmail extends Component {
     super(props);
     this.state = {
       emails: this.props.emails,
-      newEmails:[]
     };
   }
 
-  handleChange(event,index) {
-    console.log(event.target.value);
-    this.setState({['newEmail'+index]: event.target.value});
+  deleteEmail = (emailId) => {
+
   }
 
-  onChangeHandler = (e) => {
-    const index = this.state.newEmails.length;
-    console.log(index);
-    const value = this.refs.addEmail.value;
-    const newEmail = {
-      key: index,
-      emailAddress: value
-    };
+  newEmailHandler = (e) => {
+    const index = this.state.emails.length;
 
-    const newEmails = [
-      ...this.state.newEmails,
-      newEmail
+    const emails = [
+      ...this.state.emails,
+      {emailAddress: this.refs.addEmail.value}
     ];
 
-    this.props.addEmail(newEmail);
     this.refs.addEmail.value = '';
-    this.setState({['newEmail'+index]:value,newEmails},()=>{this.refs['newEmail'+index].focus();});
+    this.setState({emails},()=>{this.refs['email'+index].focus();});
+  }
+
+  moveCaretAtEnd(e) {
+    const temp_value = e.target.value;
+    e.target.value = '';
+    e.target.value = temp_value;
   }
 
   render() {
     const {emails,newEmails} = this.state;
     return (
       <div>
-        {emails.map((email,index) => {
+        {this.state.emails.map((email,index) => {
           return (
             <div key={index} className='dialog__content__row'>
-              <input type='text' ref={`email${index}`} required={true} defaultValue={email.emailAddress}/>
+              <input type='text' ref={`email${index}`} id={email.id} required={true} defaultValue={email.emailAddress} onFocus={this.moveCaretAtEnd}/>
             </div>
           )
         })}
-        {newEmails.map((email,index) => {
-          return (
-              <div key={index} className='dialog__content__row'>
-                <input type='text' ref={`newEmail${index}`} required={true} autoFocus={true} value={this.state['newEmail'+index]} onChange={(e)=>{this.handleChange(e,index)}}/>
-              </div>
-          )
-        })}
         <div className='dialog__content__row'>
-          <label htmlFor='newEmail'><nobr>+</nobr></label>
-          <input type='text' ref='addEmail' required={false} placeholder='add email (and press Enter)' onKeyUp={this.onChangeHandler}/>
+          <label><nobr>+</nobr></label>
+          <input type='text' ref='addEmail' required={false} placeholder='enter a new email' onKeyUp={this.newEmailHandler}/>
         </div>
       </div>
     )
