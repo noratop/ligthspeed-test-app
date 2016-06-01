@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ContactListView from '../components/ContactListView';
 import ContactToolBar from '../components/ContactToolBar';
+import ContactToolMenu from '../components/ContactToolBar';
 import {connect} from 'react-redux';
 import {fetchContacts} from '../redux/actions';
 
@@ -34,13 +35,15 @@ class Contacts extends Component {
     else {
       return [];
     }
-  }
+  };
+
   render() {
   console.log(this.props.contacts);
 
     return (
       <div className='contact-container'>
         <ContactToolBar userSelection={this.state.userSelection}/>
+        <ContactToolMenu/>
         {this.renderStatus()}
         <ContactListView list={this.getContactList()}/>
       </div>
