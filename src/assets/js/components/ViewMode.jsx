@@ -23,13 +23,14 @@ class ViewMode extends Component {
                     <ul className="contact-view__email__list">{this.renderEmail(emailaddresses)}</ul>
                   </div>
               }/>
-
-              <Paper zDepth={1} className="contact-view__paper" children={
-                  <div className="contact-view__email">
-                    <h4>Address</h4>
-                    <ul className="contact-view__email__list"></ul>
-                  </div>
-              }/>
+              {
+              //<Paper zDepth={1} className="contact-view__paper" children={
+              //    <div className="contact-view__email">
+              //      <h4>Address</h4>
+              //      <ul className="contact-view__email__list"></ul>
+              //    </div>
+              //}/>
+              }
           </div>
 
       </div>

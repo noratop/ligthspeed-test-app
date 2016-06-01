@@ -127,7 +127,6 @@ class EditMode extends Component {
         </div>
 
         <h4>Emails</h4>
-
         <div>
           {this.state.emails.map((email,index) => {
             return (
@@ -141,6 +140,13 @@ class EditMode extends Component {
             <label><nobr>+</nobr></label>
             <input type='text' ref='addEmail' required={false} placeholder='enter a new email' onKeyUp={this.newEmailHandler}/>
           </div>
+        </div>
+
+        {
+          //<h4>Adresses</h4>
+        }
+        <div>
+          
         </div>
       </div>
     )
